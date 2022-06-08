@@ -7,9 +7,10 @@
 // the user.
 #include <iostream>
 #include <list>
-#include <string.h>
+#include <string>
 #include <sstream>
 #include <vector>
+
 
 std::list<int> sizeOfStr(std::list<std::string> size) {
     std::list<int> listSize;
@@ -34,33 +35,39 @@ int main() {
     int element;																	
     
     // intro
-	std::cout << "Today, you'll get to select whatever you'll like to complete.";
+	std::cout << "Today, you'll get to select whatever you'll like " 
+	             "to complete.";
 	std::cout << std::endl;
 	std::cout << "Option 1: Determining the length of the elements in a list.";
 	std::cout << std::endl;
 	std::cout << "Option 2: Removing duplicates in a list.\n";
-	std::cout << "Please select either or";
+	std::cout << "Please select either or.";
+	std::cout << std::endl;
 	
 	// selector
-	std::cout <<  "Choose which game you'd like to execute (1, 2): ";
-	std::cout << std::endl;
+	std::cout << "Choose which game you'd like to execute (1, 2): ";
 	std::cin >> selector;
+	std::cout << std::endl;
 	
 	if (selector == "1") {
-	    std::cout << "Enter a list of strings (ex hi, welcome): ";
-	    std::getline(std::cin, listStr);
-	    
-	    for (std::string)
-	    // here's where u split (need to figure out)
-	    // here.
-	    for (int element : listStr) {
-	        elementSize.push_back(element);
-	    }
-	    
+		std::cout << "Enter a list of strings (ex hi, welcome): ";
+		
+		// get user input
+		std::cin.ignore();
+	    getline(std::cin, listStr);
+	   
+	   // parse the string using a for each in loop
+	   std::istringstream iss(listStr);
+	   for (std::string listStr; iss >> listStr; ) {
+	   	   elementSize.push_back(listStr);
+	   }
+	    // calls function
 	    finalList = sizeOfStr(elementSize);
 	    
+	    // displays results to user
+	    std::cout << "The length of each string is: ";
 	    for (int sizeOfString : finalList) {
-	    	 std::cout << "The length of each string is: " << sizeOfString;
+	    	std::cout << sizeOfString << " ";
 	    }
 	  
 	} else if (selector == "2") {
@@ -69,5 +76,7 @@ int main() {
 		std::cout << "Enter a list of elements: ";
 		std::getline(std::cin, userStr);
 		
+	} else {
+		std::cout << "Invalid enteries, please select either or.";
 	}
 }
